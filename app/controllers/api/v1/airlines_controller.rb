@@ -1,8 +1,10 @@
 module Api
     module V1
         class AirlinesController < ApplicationController
+            protect_from_forgery with: :null_session
+
             def index
-                airlines = Airline.AirlinesController
+                airlines = Airline.all
                 render json: AirlineSerializer.new(airlines, options).serialized_json
             end
             
