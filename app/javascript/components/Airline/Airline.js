@@ -44,7 +44,8 @@ const Airline = (props) => {
   const handleChange = (e) => {
     e.preventDefault()
     // console.log('name:', e.target.name, 'value:', e.target.value)
-    setReview(Object.assign({} , review, {[e.target.name]: e.target.value}))
+    // setReview(Object.assign({} , review, {[e.target.name]: e.target.value}))
+    setReview({...review, [e.target.name]: e.target.value })
     // the above code is setting the state. Can also use the spread operator {..review, [e.target.name]: e.target.value}
     console.log('review:', review)
   }
