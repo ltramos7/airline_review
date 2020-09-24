@@ -31,7 +31,6 @@ const Grid = styled.div`
 const Airlines = () => {
   const [airlines, setAirlines] = useState([]);
 
-  // the function below will make a request of our API and fetch a list of airlines from our database
   useEffect(() => {
     // Get all of our airlines from api
     // Update airlines in our state
@@ -42,8 +41,10 @@ const Airlines = () => {
   }, [airlines.length]);
 
   const grid = airlines.map((item) => {
+    // console.log(item.attributes.name)
+    // return (<li key={item.attributes.name}>{item.attributes.name}</li>)
     return (
-        <Airline 
+      <Airline 
             key={item.attributes.name}
             attributes={item.attributes}
         />
