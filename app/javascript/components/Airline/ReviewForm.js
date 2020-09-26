@@ -18,6 +18,7 @@ const RatingBox = styled.div`
     justify-content: center;
     flex-direction: row-reverse;
     position: relative;
+    margin-top: 12px;
 
     input {
         display: none;
@@ -41,11 +42,65 @@ const RatingBox = styled.div`
     input:not(:checked) ~ label:hover,
     input:not(:checked) ~ label:hover ~ label {
         background-image: url("data:image/svg+xml;charset=UTF-8,${Hover}")
-    }
-
-    
+    }  
 `
-const RatingTitle = styled.div``
+const Field = styled.div`
+  border-radius: 4px;
+
+  input {
+    min-height: 50px;
+    border-radius: 4px;
+    border: 1px solid #e6e6e6;
+    margin-bottom: 12px;
+    padding: 12px;
+    width: 96%
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 80px;
+    border-radius: 4px;
+    border: 1px solid #e6e6e6;
+    margin: 12px 0;
+    padding: 12px;
+  }
+`
+const Wrapper = styled.div`
+  background: #fff;
+  padding: 20px;
+  background: #000;
+  height: 100vh;
+  padding-top: 100px;
+`
+const SubmitBtn = styled.button`
+  color: #fff;
+  background: #333;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: ease-in-out 0.1s;
+  border: 1px solid #fff;
+  width: 100%;
+  margin-top: 20px;
+
+  &:hover {
+    background: #fff;
+    color: #000;
+    border: 1px solid #fff;
+  }
+`
+const Headline = styled.div`
+  padding: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #fff
+`
+const RatingTitle = styled.div`
+  font-size: 20px;
+  padding-bottom: 20px;
+  font-weight: bold;
+`
 
 const ReviewForm = (props) => {
   const ratingOptions = [5, 4, 3, 2, 1].map((score, index) => {
@@ -65,39 +120,39 @@ const ReviewForm = (props) => {
   });
 
   return (
-    <div className="wrapper">
+    <Wrapper>
       <form onSubmit={props.handleSubmit}>
-        <div>
+        <Headline>
           Have an experience with {props.attributes.name}? Share your review!
-        </div>
-        <div className="field">
+        </Headline>
+        <Field>
           <input
             onChange={props.handleChange}
             type={props.review.title}
             name="title"
             placeholder="Review Title"
           />
-        </div>
-        <div className="field">
+        </Field>
+        <Field>
           <input
             onChange={props.handleChange}
             type={props.review.description}
             name="description"
             placeholder="Review Description"
           />
-        </div>
-        <div className="field">
+        </Field>
+        <Field>
           <RatingContainer>
-            <div className="rating-title-text">Rate This Airline.</div>
+            <RatingTitle className="rating-title-text">Rate This Airline.</RatingTitle>
             <RatingBox>
                 {ratingOptions}
             </RatingBox>
             </RatingContainer>
-          </div>
+          </Field>
         
-        <button type="submit">Sumbit Your Review</button>
+        <SubmitBtn type="submit">Submit Your Review</SubmitBtn>
       </form>
-    </div>
+    </Wrapper>
   );
 };
 
